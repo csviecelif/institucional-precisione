@@ -2,26 +2,242 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem; /* Adjusted to 12px */
+
+    /* Base44 Colors */
+    --base44-primary: 218 44% 22%; /* Dark Navy Blue */
+    --base44-primary-foreground: 0 0% 98%; /* White */
+    --base44-primary-light: 218 44% 35%; /* Lighter Navy */
+    --base44-primary-dark: 218 44% 15%; /* Darker Navy */
+
+    --base44-secondary: 210 30% 96%; /* Light Blue/Gray */
+    --base44-secondary-foreground: 218 44% 22%; /* Dark Navy Blue */
+
+    --base44-accent: 142 76% 36%; /* Subtle Green */
+    --base44-accent-foreground: 0 0% 98%; /* White */
+
+    --base44-gray-50: 210 20% 98%;
+    --base44-gray-100: 210 20% 96%;
+    --base44-gray-200: 210 20% 92%;
+    --base44-gray-300: 210 20% 85%;
+    --base44-gray-400: 210 20% 70%;
+    --base44-gray-500: 210 20% 50%;
+    --base44-gray-600: 210 20% 40%;
+    --base44-gray-700: 210 20% 30%;
+    --base44-gray-800: 210 20% 20%;
+    --base44-gray-900: 210 20% 10%;
+    --base44-gray-950: 210 20% 5%;
+
+    /* Primárias */
+    --color-primary: #1E40AF; /* Azul marinho (confiança) */
+    --color-success: #10B981; /* Verde (ação/sucesso) */
+    
+    /* CTAs */
+    --color-cta-primary: var(--color-success);
+    --color-cta-hover: #059669;
+    --color-cta-secondary: var(--color-primary);
+    
+      /* Badges */
+      --badge-popular: #10B981;
+      --badge-recommended: #3B82F6;
+      --badge-value: #F59E0B;
+      
+      /* Estados */
+      --color-sigiloso-badge: #10B981; /* Badge "100% Sigiloso" */
+      --color-blue-gradient: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Garantir alinhamento perfeito */
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .nav-item svg {
+    flex-shrink: 0;
   }
-}
+
+  /* Badge "Mais Solicitado" - Verde Confiança */
+  .badge-popular {
+    background: linear-gradient(135deg, var(--badge-popular) 0%, #059669 100%);
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 12px 12px 12px 2px; /* Canto inferior esquerdo "cortado" */
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+    position: absolute;
+    top: -8px;
+    right: 16px;
+    z-index: 10;
+  }
+
+  /* Alternativa: Badge "Recomendado" - Azul Premium */
+  .badge-recommended {
+    background: linear-gradient(135deg, var(--badge-recommended) 0%, #2563EB 100%);
+    color: #FFFFFF;
+    /* restante igual ao anterior */
+  }
+
+  /* Badge com ícone de estrela (opcional) */
+  .badge-popular::before {
+    content: "⭐";
+    margin-right: 4px;
+    font-size: 10px;
+  }
+
+  /* Posicionamento responsivo: */
+  /* Desktop - canto superior direito do card */
+  @media (min-width: 768px) {
+    .service-card {
+      position: relative;
+    }
+    .badge-popular {
+      top: -8px;
+      right: 16px;
+    }
+  }
+
+  /* Mobile - acima do título, centralizado */
+  @media (max-width: 767px) {
+    .badge-popular {
+      position: static;
+      display: inline-block;
+      margin: 0 auto 12px;
+    }
+    .service-card-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  /* CTA Primário - Conversação */
+  .btn-cta-primary {
+    background: linear-gradient(135deg, var(--color-cta-primary) 0%, var(--color-cta-hover) 100%);
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 16px; /* py-2.5 px-4 equivalent */
+    height: 44px; /* h-11 equivalent */
+    border-radius: var(--radius); /* Match card border-radius */
+    border: none;
+    box-shadow: 
+      0 2px 8px rgba(16, 185, 129, 0.25),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex; /* For icon alignment */
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap; /* Ensure text stays in one line */
+  }
+
+  .btn-cta-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  }
+
+  .btn-cta-primary:active {
+    transform: translateY(0);
+  }
+
+  /* CTA Secundário - Orçamento */
+  .btn-cta-secondary {
+    background: transparent;
+    color: var(--color-cta-secondary);
+    border: 2px solid var(--color-cta-secondary);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 16px; /* py-2.5 px-4 equivalent */
+    height: 44px; /* h-11 equivalent */
+    border-radius: var(--radius); /* Match card border-radius */
+    transition: all 0.2s ease;
+    display: flex; /* For icon alignment */
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap; /* Ensure text stays in one line */
+  }
+
+  .btn-cta-secondary:hover {
+    background: rgba(30, 64, 175, 0.1);
+  }
+
+  /* CTA Blue Gradient */
+  .btn-cta-blue-gradient {
+    background: var(--color-blue-gradient);
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 16px; /* py-2.5 px-4 equivalent */
+    height: 44px; /* h-11 equivalent */
+    border-radius: var(--radius); /* Match card border-radius */
+    border: none;
+    box-shadow: 
+      0 2px 8px rgba(59, 130, 246, 0.25),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex; /* For icon alignment */
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap; /* Ensure text stays in one line */
+  }
+
+  .btn-cta-blue-gradient:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+
+  .btn-cta-blue-gradient:active {
+    transform: translateY(0);
+  }
+
+  /* Responsividade */
+  @media (max-width: 767px) {
+    .btn-cta-primary,
+    .btn-cta-secondary,
+    .btn-cta-blue-gradient {
+      width: 98%; /* 98-100% on mobile */
+      max-width: none; /* Remove max-width on mobile */
+      padding: 12px 20px; /* Adjust padding for mobile */
+      font-size: 16px; /* 16px evita zoom no iOS */
+      height: 48px; /* Min 44px, max 50px */
+    }
+  }

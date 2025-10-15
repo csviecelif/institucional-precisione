@@ -1,0 +1,25 @@
+# robots.txt para Precisione - Investigação Patrimonial
+
+User-agent: *
+Allow: /
+
+# Bloquear recursos legados que causam 404
+Disallow: /zybTrackerStatisticsAction
+Disallow: /OB-MATH-PCW.json
+Disallow: /copilot.b68e6a51.js
+Disallow: /main.3b8695ff.js
+Disallow: /google-analytics_analytics.js
+Disallow: /math_h5
+
+# Bloquear diretórios técnicos
+Disallow: /_next/
+Disallow: /api/
+Disallow: /admin/
+Disallow: /.well-known/
+
+# Permitir recursos importantes
+Allow: /_next/static/
+Allow: /api/contact
+
+# Sitemap
+Sitemap: https://precisione.vercel.app/sitemap.xml
