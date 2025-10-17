@@ -76,10 +76,11 @@ export default function ContactForm() {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    const formElement = event.currentTarget
     setLoading(true)
     setResult(null)
 
-    const formData = new FormData(event.currentTarget)
+    const formData = new FormData(formElement)
     const payload = {
       name: String(formData.get('name') ?? '').trim(),
       email: String(formData.get('email') ?? '').trim(),
@@ -132,7 +133,7 @@ export default function ContactForm() {
         throw new Error(data?.message ?? 'Não foi possível enviar sua mensagem.')
       }
 
-      event.currentTarget.reset()
+      formElement.reset()
       setMessage('')
       setResult({ success: true, message: data.message ?? 'Sua mensagem foi enviada com sucesso!' })
     } catch (error) {

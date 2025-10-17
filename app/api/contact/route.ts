@@ -49,6 +49,12 @@ export async function POST(request: Request) {
     const apiKey = process.env.RESEND_API_KEY
     const recipient = process.env.CONTACT_RECIPIENT_EMAIL
 
+    console.info('[contact] env check', {
+      hasApiKey: Boolean(apiKey),
+      hasRecipient: Boolean(recipient),
+      nodeEnv: process.env.NODE_ENV,
+    })
+
     if (!apiKey || !recipient) {
       if (process.env.NODE_ENV !== 'production') {
         console.info('[contact] mensagem recebida em desenvolvimento', payload)
