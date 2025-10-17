@@ -1,6 +1,6 @@
 // src/components/sections/ServicesSection.tsx
 import Link from 'next/link';
-import { Search, FileCheck, Locate, EyeOff, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 
 interface Service {
   icon: React.ElementType;
@@ -32,7 +32,6 @@ export default function ServicesSection({ services }: { services: Service[] }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {services.map((service, index) => {
             const isRecommended = service.badge === "Mais Solicitado";
-            const isConsultation = service.price === "Sob consulta";
             
             return (
               <div 

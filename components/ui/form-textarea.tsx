@@ -11,7 +11,7 @@ interface FormTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaEle
 }
 
 const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
-  ({ label, error, description, required, className, ...props }, ref) => {
+  ({ label, error, description, className, ...props }, ref) => {
     return (
       <div className="space-y-2">
         {label && (

@@ -1,7 +1,3 @@
-import { Search, Phone } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from 'next/link';
-
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden py-20 md:py-28 lg:py-36 bg-gradient-to-br from-base44-gray-50 to-base44-gray-100">

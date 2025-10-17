@@ -18,21 +18,6 @@ export const metadata: Metadata = {
     'Assessoria investigativa de alta confidencialidade para advogados, instituições financeiras e empresas. Mapemento patrimonial, due diligence e análises estratégicas com rigor técnico.',
 }
 
-const credibilityHighlights = [
-  {
-    title: 'Confidencialidade Absoluta',
-    description: 'Protocolos de segurança, NDAs customizados e governança de dados alinhada às melhores práticas.',
-  },
-  {
-    title: 'Cobertura Nacional',
-    description: 'Equipe e rede de especialistas operando em todas as capitais brasileiras e principais centros econômicos.',
-  },
-  {
-    title: 'Metodologia Proprietária',
-    description: 'Integração de inteligência jurídica, análise de dados e investigação de campo com controle de qualidade.',
-  },
-]
-
 const audienceSegments = [
   {
     icon: Gavel,

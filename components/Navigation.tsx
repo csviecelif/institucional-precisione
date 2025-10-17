@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Search, FileCheck, Home, Menu, X, Shield, Phone, Mail, Info, Locate, EyeOff } from 'lucide-react'
+import { Search, FileCheck, Home, Menu, X, Shield, Phone, Locate, EyeOff } from 'lucide-react'
 
 interface MenuItem {
   href: string

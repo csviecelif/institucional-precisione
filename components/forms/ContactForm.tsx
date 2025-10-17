@@ -24,7 +24,8 @@ export default function ContactForm() {
         return prev
       }
 
-      const { [field]: _removed, ...rest } = prev
+      const rest = { ...prev }
+      delete rest[field]
       return rest
     })
   }

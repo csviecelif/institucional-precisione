@@ -2,7 +2,16 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
-import type { NavigationItem } from '@/types/navigation'
+import type { LucideIcon } from 'lucide-react'
+
+type NavigationItemType = 'route' | 'anchor' | 'action'
+
+type NavigationItem = {
+  type: NavigationItemType
+  href: string
+  label: string
+  icon: LucideIcon
+}
 
 interface NavItemProps {
   item: NavigationItem

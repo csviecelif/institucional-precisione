@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Home, ArrowLeft, Search, FileText } from 'lucide-react'
+import { Home, Search, FileText } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
