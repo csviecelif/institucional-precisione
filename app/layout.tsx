@@ -50,9 +50,9 @@ export const metadata: Metadata = {
     siteName: 'Precisione',
     images: [
       {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
+        url: '/og-image.png',
+        width: 1344,
+        height: 768,
         alt: 'Precisione - Investigação Patrimonial',
       },
     ],
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Precisione - Investigação Patrimonial',
     description: 'Investigação patrimonial com entregas ágeis, precisão jurídica e cobertura nacional.',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.png'],
   },
 }
 
@@ -79,6 +79,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={inter.variable}>
       <head>
+        <meta charSet="utf-8" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </head>

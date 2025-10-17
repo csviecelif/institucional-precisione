@@ -88,18 +88,6 @@ export default function NotFoundPage() {
           </div>
         </div>
 
-        {/* Informações de contato */}
-        <div className="mt-8 p-6 bg-base44-primary-dark text-white rounded-lg">
-          <h4 className="font-semibold mb-2">Precisa de ajuda imediata?</h4>
-          <p className="text-sm text-base44-gray-300 mb-3">
-            Nossa equipe está pronta para ajudar com sua investigação patrimonial
-          </p>
-          <div className="flex flex-col sm:flex-row gap-2 text-sm">
-            <span>WhatsApp: (41) 98430-0319</span>
-            <span className="hidden sm:inline">|</span>
-            <span>Email: contato@precisione.com.br</span>
-          </div>
-        </div>
       </div>
     </div>
   )

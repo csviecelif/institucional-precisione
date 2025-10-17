@@ -3,7 +3,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Instagram, Shield, Phone, Mail, MapPin, Info } from 'lucide-react'
+import { Instagram, Phone, Mail, MapPin, Info } from 'lucide-react'
 
 interface MenuItem {
   href: string
@@ -34,18 +34,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 border-b border-slate-700 pb-8 mb-8">
           {/* Company Info */}
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center shadow-md">
-                <Shield className="w-6 h-6 text-white" />
-              </div>
-              <div className="flex flex-col justify-center">
-                <span className="text-xl font-bold text-white leading-tight">
-                  PRECISIONE
-                </span>
-                <span className="text-xs text-slate-400 leading-tight">
-                  Investigação Patrimonial
-                </span>
-              </div>
+            <Link href="/" className="inline-flex flex-col mb-4">
+              <span className="text-xl font-bold text-white leading-tight">
+                PRECISIONE
+              </span>
+              <span className="text-xs text-slate-400 leading-tight">
+                Investigação Patrimonial
+              </span>
             </Link>
             <p className="text-slate-400 text-sm max-w-md">
               Especialistas em investigação patrimonial, oferecendo relatórios detalhados e estratégias eficazes para a recuperação de ativos.
@@ -93,12 +88,12 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
-              <li className="flex items-center space-x-2 pt-2">
+              <li className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 flex-shrink-0" />
                 <span>41 984300319</span>
               </li>
-              <li className="flex items-start space-x-2">
-                <MapPin className="w-4 h-4 flex-shrink-0 mt-1" />
+              <li className="flex items-center space-x-2">
+                <MapPin className="w-4 h-4 flex-shrink-0" />
                 <span>Curitiba - PR</span>
               </li>
             </ul>

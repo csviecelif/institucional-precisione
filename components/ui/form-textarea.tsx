@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { Label } from '@/components/ui/label'
 
 interface FormTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  label: string
+  label?: string
   error?: string
   description?: string
   required?: boolean
@@ -14,9 +14,11 @@ const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
   ({ label, error, description, required, className, ...props }, ref) => {
     return (
       <div className="space-y-2">
-        <Label htmlFor={props.id} className="text-sm font-medium text-gray-700">
-          {label}
-        </Label>
+        {label && (
+          <Label htmlFor={props.id} className="text-sm font-medium text-gray-700">
+            {label}
+          </Label>
+        )}
         <textarea
           ref={ref}
           className={cn(

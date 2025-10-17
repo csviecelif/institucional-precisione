@@ -126,7 +126,7 @@ const benefitItems: HighlightItem[] = [
 export default function DueDiligencePage() {
   return (
     <div className="bg-base44-gray-50 text-base44-gray-900">
-      <section className="relative overflow-hidden border-b border-base44-primary/15 bg-[#0a1c2e] py-24 text-base44-primary-foreground md:py-32">
+      <section className="relative flex items-center overflow-visible border-b border-base44-primary/15 bg-[#0a1c2e] py-12 text-base44-primary-foreground md:py-16 min-h-[45vh] max-h-[55vh]">
         <div className="absolute inset-0 opacity-90">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(33,63,103,0.45),transparent_60%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(10,28,46,0.95)_0%,rgba(17,42,66,0.88)_55%,rgba(12,30,49,0.85)_100%)]" />
@@ -206,24 +206,15 @@ export default function DueDiligencePage() {
                   </Link>
                 ))}
               </div>
-
-              <div className="relative border-t border-white/25 bg-white/12 px-3 py-1.5 backdrop-blur-sm">
-                <p className="text-center text-[8px] font-medium uppercase tracking-[0.35em] text-white/60">
-                  Precisione • 2025
-                </p>
-              </div>
             </div>
           </div>
         </div>
 
-        <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
-          <span className="text-xs font-semibold uppercase tracking-[0.35em] text-base44-secondary">
-            Serviços
-          </span>
-          <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+        <div className="relative mx-auto mt-16 flex max-w-4xl flex-col items-center gap-6 px-4 text-center sm:mt-20 sm:px-6 lg:mt-24 lg:px-8">
+          <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
             Due Diligence e Background Check
           </h1>
-          <p className="mt-8 text-lg leading-relaxed text-base44-secondary/90 sm:text-xl">
+          <p className="max-w-3xl text-base text-base44-secondary/90 sm:text-lg">
             Mitigue riscos e tome decisões com confiança. Investigamos profundamente parceiros, fornecedores e executivos
             para garantir integridade, conformidade e segurança nas suas operações estratégicas.
           </p>
