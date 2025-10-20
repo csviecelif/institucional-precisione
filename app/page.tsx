@@ -24,7 +24,7 @@ const audienceSegments = [
     icon: Gavel,
     title: 'Advocacia Contenciosa',
     description:
-      'Suporte probatório para execuções, disputas patrimoniais e blindagem de teses com relatórios técnicos e pareceres personalizados.',
+      'Suporte probatório para execuções, disputas patrimoniais e blindagem de teses com relatórios técnicos personalizados.',
     bullets: [
       'Investigação de ocultação patrimonial complexa',
       'Produção de dossiês com validade jurídica',
@@ -44,7 +44,7 @@ const audienceSegments = [
   },
   {
     icon: BriefcaseBusiness,
-    title: 'Corporativo & Mercados Regulados',
+    title: 'Corporativo',
     description:
       'Mapeamento de contrapartes, parceiros e executivos para decisões de M&A, governança e compliance regulatório.',
     bullets: [

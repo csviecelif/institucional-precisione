@@ -63,16 +63,16 @@ const differentiators = [
 export default function SobreNosPage() {
   return (
     <div className="bg-base44-gray-50 text-base44-gray-900">
-      <section className="relative flex items-center overflow-visible border-b border-base44-primary/15 bg-[#0a1c2e] py-12 text-base44-primary-foreground md:py-16 min-h-[45vh] max-h-[55vh]">
+      <section className="relative flex items-center overflow-visible border-b border-base44-primary/15 bg-[#0a1c2e] py-16 text-base44-primary-foreground md:py-20 min-h-[60vh]">
         <div className="absolute inset-0 opacity-90">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(33,63,103,0.45),transparent_55%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(130deg,rgba(10,28,46,0.95)_0%,rgba(17,42,66,0.88)_55%,rgba(12,30,49,0.85)_100%)]" />
         </div>
-        <div className="absolute left-1/2 top-10 z-20 w-full max-w-[18rem] -translate-x-1/2 px-4 sm:top-12 sm:max-w-md md:left-auto md:right-2 md:max-w-none md:translate-x-0 md:px-0 lg:right-4 xl:right-6">
+        <div className="absolute left-1/2 top-6 z-20 w-full max-w-[18rem] -translate-x-1/2 px-4 sm:top-10 sm:max-w-md md:left-auto md:right-2 md:max-w-none md:translate-x-0 md:px-0 lg:right-4 xl:right-6">
           <FloatingNav navLinks={aboutNavLinks} serviceLinks={serviceLinks} className="sm:justify-end" />
         </div>
 
-        <div className="relative mx-auto mt-16 flex max-w-4xl flex-col items-center gap-6 px-4 text-center sm:mt-20 sm:px-6 lg:mt-24 lg:px-8">
+        <div className="relative mx-auto flex w-full max-w-4xl flex-col items-center gap-6 px-4 pb-12 pt-36 text-center sm:px-6 sm:pt-40 lg:pt-44 lg:px-8">
           <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">Sobre a Precisione</h1>
           <p className="max-w-3xl text-base text-base44-secondary/90 sm:text-lg">
             Nascemos para fortalecer estratégias jurídicas e corporativas com inteligência patrimonial de elite. Nossa equipe

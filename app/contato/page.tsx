@@ -6,7 +6,7 @@ import FloatingNav from '@/components/FloatingNav'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata = createPageMetadata({
-  title: 'Fale com a Precisione – Consultoria de Investigação Patrimonial',
+  title: 'Fale com a Precisione - Consultoria de Investigação Patrimonial',
   description:
     'Solicite proposta e inicie diagnósticos patrimoniais com a Precisione, recebendo atendimento dedicado por formulário ou WhatsApp.',
   canonicalPath: '/contato',
@@ -47,7 +47,14 @@ export default function ContactPage() {
             id="contato-formulario"
             className="w-full max-w-[45rem] rounded-3xl border border-base44-primary/15 bg-white/95 p-6 sm:p-8 shadow-diffuse"
           >
-            <h2 className="mb-6 text-center text-3xl font-extrabold text-base44-primary sm:text-4xl">Fale Conosco</h2>
+            <h2 className="mb-4 text-center text-3xl font-extrabold text-base44-primary sm:text-4xl">Fale Conosco</h2>
+            <p className="mb-6 text-center text-sm text-base44-gray-500">
+              Ao enviar seus dados você confirma que leu e concorda com a{' '}
+              <Link href="/politica-privacidade" className="font-semibold text-base44-primary hover:underline">
+                Política de Privacidade da Precisione
+              </Link>
+              .
+            </p>
             <ContactForm />
           </div>
 
@@ -93,3 +100,4 @@ export default function ContactPage() {
     </div>
   )
 }
+

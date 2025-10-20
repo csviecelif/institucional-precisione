@@ -18,6 +18,7 @@ const NAV_HIDDEN_PATHS = [
   '/due-diligence',
   '/localizacao-rapida',
   '/ocultacao-patrimonio',
+  '/politica-privacidade',
 ]
 
 export default function LayoutShell({ children }: LayoutShellProps) {
@@ -32,3 +33,4 @@ export default function LayoutShell({ children }: LayoutShellProps) {
     </div>
   )
 }
+
