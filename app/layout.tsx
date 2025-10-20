@@ -13,20 +13,23 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://precisionebr.com'),
   title: {
-    default: 'Precisione - Investigação Patrimonial Profissional',
-    template: '%s | Precisione'
+    default: 'Precisione – Inteligência Patrimonial para Decisões Estratégicas',
+    template: '%s | Precisione',
   },
   description:
-    'Especialistas em investigação patrimonial com atuação nacional, entregas ágeis e rigor jurídico. Inteligência para decisões estratégicas.',
+    'Consultoria investigativa em rastreamento patrimonial, due diligence e localização de ativos com rigor jurídico e cobertura nacional.',
   keywords: [
     'investigação patrimonial',
     'due diligence',
     'busca de ativos',
-    'advogados',
-    'recuperação de crédito',
-    'Curitiba',
-    'Brasil'
+    'localização de pessoas',
+    'ocultação de bens',
+    'consultoria jurídica',
+    'inteligência patrimonial',
   ],
+  alternates: {
+    canonical: '/',
+  },
   authors: [{ name: 'Precisione Consultoria' }],
   creator: 'Precisione Consultoria',
   publisher: 'Precisione Consultoria',
@@ -45,23 +48,25 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'pt_BR',
     url: 'https://precisionebr.com',
-    title: 'Precisione - Investigação Patrimonial',
-    description: 'Metodologia exclusiva em investigação patrimonial, com confidencialidade e suporte consultivo.',
+    title: 'Precisione – Inteligência Patrimonial para Decisões Estratégicas',
+    description:
+      'Consultoria investigativa em rastreamento patrimonial, due diligence e localização de ativos com rigor jurídico e cobertura nacional.',
     siteName: 'Precisione',
     images: [
       {
-        url: '/og-image.png',
-        width: 1344,
-        height: 768,
-        alt: 'Precisione - Investigação Patrimonial',
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Precisione – Inteligência Patrimonial para Decisões Estratégicas',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Precisione - Investigação Patrimonial',
-    description: 'Investigação patrimonial com entregas ágeis, precisão jurídica e cobertura nacional.',
-    images: ['/og-image.png'],
+    title: 'Precisione – Inteligência Patrimonial para Decisões Estratégicas',
+    description:
+      'Consultoria investigativa em rastreamento patrimonial, due diligence e localização de ativos com rigor jurídico e cobertura nacional.',
+    images: ['/og-image.jpg'],
   },
 }
 

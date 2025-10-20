@@ -1,4 +1,3 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
   ArrowRight,
@@ -11,12 +10,14 @@ import {
   TrendingUp,
 } from 'lucide-react'
 import Hero, { type SectorCardItem } from '@/components/Hero'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Precisione | Inteligência Patrimonial para Decisões Estratégicas',
+export const metadata = createPageMetadata({
+  title: 'Inteligência Patrimonial para Decisões Estratégicas',
   description:
-    'Assessoria investigativa de alta confidencialidade para advogados, instituições financeiras e empresas. Mapemento patrimonial, due diligence e análises estratégicas com rigor técnico.',
-}
+    'Mapeamos patrimônios, conduzimos due diligence e entregamos relatórios estratégicos para escritórios de advocacia, instituições financeiras e empresas.',
+  canonicalPath: '/',
+})
 
 const audienceSegments = [
   {

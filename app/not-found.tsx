@@ -4,7 +4,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Página não encontrada - 404 | Precisione',
-  description: 'A página que você procura não foi encontrada. Visite nossa página inicial ou entre em contato conosco.',
+  description:
+    'A página que você procura não foi encontrada. Visite nossa página inicial ou entre em contato conosco.',
   robots: {
     index: false,
     follow: false,

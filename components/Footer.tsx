@@ -29,7 +29,7 @@ export default function Footer() {
   const isActive = (path: string) => pathname === path
 
   return (
-    <footer className="bg-slate-800 text-slate-300 py-12">
+    <footer className="bg-slate-800 text-slate-300 py-12" role="contentinfo">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 border-b border-slate-700 pb-8 mb-8">
           {/* Company Info */}
@@ -46,14 +46,14 @@ export default function Footer() {
               Especialistas em investigação patrimonial, oferecendo relatórios detalhados e estratégias eficazes para a recuperação de ativos.
             </p>
             <div className="flex space-x-4 mt-6">
-              <a href="https://www.instagram.com/precisionebr/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-400 transition-colors">
+              <a href="https://www.instagram.com/precisionebr/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-400 transition-colors" aria-label="Instagram da Precisione">
                 <Instagram className="w-6 h-6" />
               </a>
             </div>
           </div>
 
           {/* Services */}
-          <div>
+          <nav aria-label="Principais serviços">
             <h3 className="text-lg font-semibold text-white mb-4">Serviços</h3>
             <ul className="space-y-2">
               {serviceItems.map((item) => (
@@ -69,10 +69,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Contact Info */}
-          <div>
+          <address className="not-italic">
             <h3 className="text-lg font-semibold text-white mb-4">Contato</h3>
             <ul className="space-y-2 text-slate-400">
               {otherItems.map((item) => (
@@ -89,15 +89,15 @@ export default function Footer() {
                 </li>
               ))}
               <li className="flex items-center space-x-2">
-                <Phone className="w-4 h-4 flex-shrink-0" />
-                <span>41 984300319</span>
+                <Phone className="w-4 h-4 flex-shrink-0" aria-hidden />
+                <a href="tel:5541984300319" className="hover:text-blue-300 transition-colors">41 98430-0319</a>
               </li>
               <li className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4 flex-shrink-0" />
-                <span>Curitiba - PR</span>
+                <MapPin className="w-4 h-4 flex-shrink-0" aria-hidden />
+                <span aria-label="Localização da Precisione">Curitiba - PR</span>
               </li>
             </ul>
-          </div>
+          </address>
         </div>
 
         {/* Copyright */}

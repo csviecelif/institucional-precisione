@@ -11,6 +11,13 @@ import { Loader2, CheckCircle, XCircle } from 'lucide-react'
 const MAX_MESSAGE_LENGTH = 500
 type ContactField = 'name' | 'email' | 'subject' | 'message'
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const FIELD_ERROR_IDS: Record<ContactField, string> = {
+  name: 'contact-error-name',
+  email: 'contact-error-email',
+  subject: 'contact-error-subject',
+  message: 'contact-error-message',
+}
+const MESSAGE_COUNTER_ID = 'contact-message-count'
 
 export default function ContactForm() {
   const [loading, setLoading] = useState(false)
@@ -58,6 +65,12 @@ export default function ContactForm() {
 
   const trimmedMessage = message.trim()
   const isMessageValid = trimmedMessage.length > 0 && trimmedMessage.length <= MAX_MESSAGE_LENGTH
+  const messageDescribedBy = [
+    errors.message ? FIELD_ERROR_IDS.message : null,
+    MESSAGE_COUNTER_ID,
+  ]
+    .filter(Boolean)
+    .join(' ') || undefined
 
   const renderErrorHint = (field: ContactField) => {
     if (!errors[field]) {
@@ -65,7 +78,12 @@ export default function ContactForm() {
     }
 
     return (
-      <div className="flex items-center gap-1 text-xs">
+      <div
+        id={FIELD_ERROR_IDS[field]}
+        className="flex items-center gap-1 text-xs"
+        role="alert"
+        aria-live="polite"
+      >
         <span className="text-sm font-bold leading-none text-red-500">*</span>
         <span className="rounded-full bg-red-50 px-2 py-1 text-[11px] font-semibold text-red-600 shadow-sm">
           {errors[field]}
@@ -228,7 +246,10 @@ export default function ContactForm() {
             </Label>
             {renderErrorHint('message')}
           </div>
-          <span className="text-xs font-medium text-base44-gray-500">
+          <span
+            id={MESSAGE_COUNTER_ID}
+            className="text-xs font-medium text-base44-gray-500"
+          >
             {message.length}/{MAX_MESSAGE_LENGTH}
           </span>
         </div>
@@ -240,6 +261,7 @@ export default function ContactForm() {
             required
             aria-required="true"
             aria-invalid={Boolean(errors.message)}
+            aria-describedby={messageDescribedBy}
             className={[
               'rounded-2xl bg-base44-gray-50 pr-12 text-base44-gray-800 placeholder:text-base44-gray-400 focus-visible:ring-base44-primary',
               errors.message ? 'border border-red-300 focus-visible:ring-red-500' : 'border border-base44-primary/20',
@@ -264,6 +286,7 @@ export default function ContactForm() {
           type="submit"
           className="w-full rounded-full bg-base44-primary text-base44-primary-foreground shadow-md shadow-base44-primary/20 transition hover:bg-base44-primary-light"
           disabled={loading}
+          aria-busy={loading}
         >
           {loading ? (
             <>

@@ -15,7 +15,7 @@ export default function SectorCards({ items, className }: SectorCardsProps) {
           className="rounded-2xl border border-white/10 bg-white/5 p-6 text-left text-white shadow backdrop-blur-sm"
         >
           <h2 className="text-lg font-semibold">{item.title}</h2>
-          <p className="mt-4 text-sm leading-relaxed text-white/80">{item.description}</p>
+          <p className="mt-4 text-sm leading-relaxed text-white">{item.description}</p>
         </article>
       ))}
     </div>

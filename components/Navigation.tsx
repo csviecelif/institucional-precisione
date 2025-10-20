@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Search, FileCheck, Home, Menu, X, Shield, Phone, Locate, EyeOff } from 'lucide-react'
@@ -13,21 +13,20 @@ interface MenuItem {
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null)
+  const firstMobileLinkRef = useRef<HTMLAnchorElement | null>(null)
+  const mobileMenuId = 'mobile-navigation'
   const pathname = usePathname()
 
-  if (
-    [
-      '/',
-      '/contato',
-      '/sobre-nos',
-      '/busca-ativos',
-      '/due-diligence',
-      '/localizacao-rapida',
-      '/ocultacao-patrimonio',
-    ].includes(pathname)
-  ) {
-    return null
-  }
+  const shouldHideNavigation = [
+    '/',
+    '/contato',
+    '/sobre-nos',
+    '/busca-ativos',
+    '/due-diligence',
+    '/localizacao-rapida',
+    '/ocultacao-patrimonio',
+  ].includes(pathname)
 
   const navItems: MenuItem[] = [
     { href: '/', label: 'Home', icon: Home },
@@ -39,6 +38,34 @@ export default function Navigation() {
 
   const menuItems: MenuItem[] = [
   ]
+
+  useEffect(() => {
+    if (!isOpen) {
+      return
+    }
+
+    firstMobileLinkRef.current?.focus()
+  }, [isOpen])
+
+  useEffect(() => {
+    if (!isOpen) {
+      return
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false)
+        menuButtonRef.current?.focus()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isOpen])
+
+  if (shouldHideNavigation) {
+    return null
+  }
 
   const isActive = (path: string) => pathname === path
 
@@ -56,7 +83,7 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-glass border-b border-base44-gray-200">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-glass border-b border-base44-gray-200" aria-label="Navegação principal">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 h-14">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -119,8 +146,13 @@ export default function Navigation() {
           {/* Mobile menu button */}
           <div className="lg:hidden">
             <button
+              ref={menuButtonRef}
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-600 hover:text-blue-700 p-2 rounded-lg w-10 h-10 flex items-center justify-center"
+              aria-expanded={isOpen}
+              aria-controls={mobileMenuId}
+              aria-label={isOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -129,7 +161,12 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden border-t border-gray-200 py-4">
+          <div
+            id={mobileMenuId}
+            className="lg:hidden border-t border-gray-200 py-4"
+            role="region"
+            aria-label="Menu móvel"
+          >
             <div className="space-y-1">
               {navItems.map((item) => (
                 <Link

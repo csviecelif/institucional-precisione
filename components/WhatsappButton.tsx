@@ -33,9 +33,10 @@ export default function WhatsappButton() {
         rel="noopener noreferrer"
         className="relative flex h-16 w-16 items-center justify-center rounded-full bg-[#128C7E] shadow-lg transition-colors hover:bg-[#0f7c70] group"
         aria-label="Fale conosco pelo WhatsApp"
+        tabIndex={isVisible ? 0 : -1}
       >
         <FontAwesomeIcon icon={faWhatsapp} className="h-7 w-7 text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]" />
-        <span className="absolute -top-1 -right-1 flex items-center justify-center h-6 px-2 rounded-full bg-[#0c5f59] text-xs font-bold text-white shadow-md transition-colors group-hover:bg-[#094b46]">
+        <span className="absolute -top-1 -right-1 flex items-center justify-center h-6 px-2 rounded-full bg-[#0c5f59] text-xs font-bold text-white shadow-md transition-colors group-hover:bg-[#094b46]" aria-hidden>
           Online
         </span>
       </Link>
