@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import { analytics } from '@/lib/analytics'
 
 type LinkItem = {
   href: string
@@ -32,9 +33,7 @@ export default function FloatingNav({
   menuLabel = 'Serviços disponíveis',
 }: FloatingNavProps) {
   const [isOpen, setIsOpen] = useState(false)
-  const [isDesktop, setIsDesktop] = useState<boolean>(() =>
-    typeof window !== 'undefined' ? window.matchMedia('(min-width: 640px)').matches : false
-  )
+  const [isDesktop, setIsDesktop] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const firstItemRef = useRef<HTMLAnchorElement | null>(null)
@@ -43,16 +42,22 @@ export default function FloatingNav({
   const menuId = useId()
 
   useEffect(() => {
-    const updateViewport = () => {
-      if (typeof window === 'undefined') {
-        return
-      }
-      setIsDesktop(window.matchMedia('(min-width: 640px)').matches)
+    if (typeof window === 'undefined') {
+      return
     }
 
-    updateViewport()
-    window.addEventListener('resize', updateViewport)
-    return () => window.removeEventListener('resize', updateViewport)
+    const mediaQuery = window.matchMedia('(min-width: 640px)')
+    const handleChange = (event: MediaQueryListEvent) => setIsDesktop(event.matches)
+
+    setIsDesktop(mediaQuery.matches)
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', handleChange)
+      return () => mediaQuery.removeEventListener('change', handleChange)
+    }
+
+    mediaQuery.addListener(handleChange)
+    return () => mediaQuery.removeListener(handleChange)
   }, [])
 
   useEffect(() => {
@@ -150,7 +155,16 @@ export default function FloatingNav({
     }
   }
 
-  const handleMenuClick = () => {
+  const trackNavLink = (href: string, source: string) => {
+    if (href === '/contato') {
+      analytics.trackContactClick(source)
+    } else if (href.includes('politica')) {
+      analytics.trackPrivacyClick(source)
+    }
+  }
+
+  const handleMenuClick = (href: string) => {
+    trackNavLink(href, 'floating-nav-menu')
     setIsOpen(false)
   }
 
@@ -180,6 +194,7 @@ export default function FloatingNav({
               floatingNavClasses,
               'flex h-full items-center focus-visible:ring-white/60 focus-visible:ring-offset-0'
             )}
+            onClick={() => trackNavLink(href, 'floating-nav-inline')}
           >
             <span className="relative z-10 flex items-center gap-2">{label}</span>
             <div className={cn(floatingNavHighlightClasses)} aria-hidden />
@@ -281,19 +296,19 @@ export default function FloatingNav({
                       const index = itemCounter
 
                       return (
-                        <Link
-                          key={href}
-                          href={href}
-                          role="menuitem"
-                          ref={(element) => {
-                            menuItemsRef.current[index] = element
+                    <Link
+                      key={href}
+                      href={href}
+                      role="menuitem"
+                      ref={(element) => {
+                        menuItemsRef.current[index] = element
                             if (index === 0) {
                               firstItemRef.current = element
                             }
                           }}
                           tabIndex={isOpen ? 0 : -1}
                           onKeyDown={(event) => handleMenuKeyDown(event, index)}
-                          onClick={handleMenuClick}
+                      onClick={() => handleMenuClick(href)}
                           className="group/item relative flex items-center gap-2.5 overflow-hidden rounded-xl border border-white/25 bg-white/12 px-3 py-2 text-[12px] text-white transition-all duration-400 ease-out hover:border-white/35 hover:bg-white/18 hover:translate-x-1 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
                         >
                           <span

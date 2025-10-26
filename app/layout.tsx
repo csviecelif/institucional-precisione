@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import './globals.css'
 import LayoutShell from '@/components/LayoutShell'
 import WhatsappButton from '@/components/WhatsappButton'
-import './globals.css'
+import CookieBanner from '@/components/CookieBanner'
+import AnalyticsManager from '@/components/AnalyticsManager'
+import { ConsentProvider } from '@/contexts/ConsentContext'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -82,15 +85,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR" className={inter.variable}>
+    <html lang="pt-BR" className={inter.variable} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </head>
       <body className={`${inter.className} antialiased`}>
-        <LayoutShell>{children}</LayoutShell>
-        <WhatsappButton />
+        <ConsentProvider>
+          <LayoutShell>{children}</LayoutShell>
+          <AnalyticsManager />
+          <WhatsappButton />
+          <CookieBanner />
+        </ConsentProvider>
       </body>
     </html>
   )

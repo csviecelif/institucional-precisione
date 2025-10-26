@@ -4,6 +4,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Instagram, Phone, Mail, MapPin, Info } from 'lucide-react'
+import { analytics } from '@/lib/analytics'
 
 interface MenuItem {
   href: string
@@ -25,6 +26,14 @@ export default function Footer() {
     { href: '/sobre-nos', label: 'Sobre Nós', icon: Info },
     { href: '/contato', label: 'Contato', icon: Mail },
   ];
+
+  const trackLink = (href: string, source: string) => {
+    if (href === '/contato') {
+      analytics.trackContactClick(source)
+    } else if (href.includes('politica')) {
+      analytics.trackPrivacyClick(source)
+    }
+  };
 
   const isActive = (path: string) => pathname === path
 
@@ -79,6 +88,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
+                    onClick={() => trackLink(item.href, 'footer-nav')}
                     className={`flex items-center space-x-2 text-slate-400 hover:text-blue-300 transition-colors ${
                       isActive(item.href) ? 'text-blue-400 font-semibold' : ''
                     }`}

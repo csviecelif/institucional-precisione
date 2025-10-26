@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input'
 import { FormTextarea as Textarea } from '@/components/ui/form-textarea'
 import { Label } from '@/components/ui/label'
 import { Loader2, CheckCircle, XCircle } from 'lucide-react'
+import { analytics } from '@/lib/analytics'
 
 const MAX_MESSAGE_LENGTH = 500
 type ContactField = 'name' | 'email' | 'subject' | 'message'
@@ -299,7 +300,11 @@ export default function ContactForm() {
         </Button>
         <p className="mt-2 text-center text-xs text-base44-gray-500">
           Ao enviar, você concorda com o uso dos seus dados conforme nossa{' '}
-          <Link href="/politica-de-privacidade" className="font-semibold text-base44-primary hover:text-base44-primary-light">
+          <Link
+            href="/politica-de-privacidade"
+            className="font-semibold text-base44-primary hover:text-base44-primary-light"
+            onClick={() => analytics.trackPrivacyClick('contact-form')}
+          >
             política de privacidade
           </Link>
           .

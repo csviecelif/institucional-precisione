@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Search, FileCheck, Home, Menu, X, Shield, Phone, Locate, EyeOff } from 'lucide-react'
+import { analytics } from '@/lib/analytics'
 
 interface MenuItem {
   href: string
@@ -137,6 +138,7 @@ export default function Navigation() {
             <Link
               href="/contato"
               className="bg-base44-accent hover:bg-base44-accent-dark text-base44-accent-foreground px-6 py-2 rounded-full text-sm font-medium transition-colors h-10 whitespace-nowrap flex items-center shadow-md"
+              onClick={() => analytics.trackContactClick('header-desktop')}
             >
               <Phone className="w-4 h-4 mr-2" />
               Falar com Especialista
@@ -201,7 +203,10 @@ export default function Navigation() {
 
               <Link
                 href="/contato"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  analytics.trackContactClick('header-mobile')
+                  setIsOpen(false)
+                }}
                 className="w-full flex items-center justify-center space-x-2 px-3 py-3 text-sm bg-base44-accent text-base44-accent-foreground rounded-full text-center shadow-md"
               >
                 <Phone className="w-4 h-4" />
