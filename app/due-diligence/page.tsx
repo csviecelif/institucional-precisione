@@ -1,5 +1,4 @@
 // src/app/due-diligence/page.tsx
-import Link from 'next/link'
 import type { LucideIcon } from 'lucide-react'
 import {
   ArrowRight,
@@ -15,7 +14,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { createPageMetadata } from '@/lib/seo'
 import FloatingNav from '@/components/FloatingNav'
-import { analytics } from '@/lib/analytics'
+import TrackedContactLink from '@/components/TrackedContactLink'
 
 const heroNavLinks = [
   { href: '/contato', label: 'Contato' },
@@ -224,11 +223,7 @@ export default function DueDiligencePage() {
             Entre em contato e descubra como nossa due diligence garante segurança para contratos, investimentos e
             contratações-chave.
           </p>
-          <Link
-            href="/contato"
-            className="mt-8 inline-block"
-            onClick={() => analytics.trackContactClick('due-diligence-cta')}
-          >
+          <TrackedContactLink href="/contato" className="mt-8 inline-block" source="due-diligence-cta">
             <Button
               size="lg"
               className="bg-white text-base44-primary hover:bg-base44-secondary hover:text-base44-primary"
@@ -236,7 +231,7 @@ export default function DueDiligencePage() {
               Fale com um Especialista
               <ArrowRight className="ml-2 h-5 w-5" aria-hidden />
             </Button>
-          </Link>
+          </TrackedContactLink>
         </div>
       </section>
     </div>

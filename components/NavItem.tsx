@@ -1,3 +1,5 @@
+'use client'
+
 // src/components/NavItem.tsx
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'

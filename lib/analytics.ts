@@ -18,7 +18,7 @@ export const pageview = (url: string) => {
 
 type EventParams = {
   action: string
-  params?: Gtag.EventParams
+  params?: Gtag.EventParams | Record<string, unknown>
 }
 
 export const event = ({ action, params }: EventParams) => {
@@ -30,7 +30,7 @@ export const event = ({ action, params }: EventParams) => {
 export const trackContactClick = (source: string) =>
   event({
     action: 'contact_cta_click',
-    params: { source },
+    params: { source } as Record<string, unknown>,
   })
 
 export const trackWhatsappClick = () =>
@@ -41,7 +41,7 @@ export const trackWhatsappClick = () =>
 export const trackPrivacyClick = (source: string) =>
   event({
     action: 'privacy_link_click',
-    params: { source },
+    params: { source } as Record<string, unknown>,
   })
 
 export const analytics = {
