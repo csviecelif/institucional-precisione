@@ -3,7 +3,7 @@ import { Home, Search, FileText } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Página não encontrada - 404 | Precisione',
+  title: '404 - Página não encontrada | Precisione',
   description:
     'A página que você procura não foi encontrada. Visite nossa página inicial ou entre em contato conosco.',
   robots: {
@@ -32,9 +32,6 @@ export default function NotFoundPage() {
           <p className="text-lg text-gray-600 mb-6">
             Ops! A página que você está procurando não existe ou foi removida.
           </p>
-          <p className="text-base text-gray-500">
-            Que tal conhecer nossos serviços de <strong>investigação patrimonial</strong> com resultados garantidos?
-          </p>
         </div>
 
         {/* Ações */}
@@ -52,44 +49,10 @@ export default function NotFoundPage() {
             className="inline-flex items-center px-6 py-3 border-2 border-base44-primary text-base44-primary rounded-lg font-semibold hover:bg-base44-primary hover:text-white transition-colors"
           >
             <FileText className="w-5 h-5 mr-2" />
-            Solicitar Orçamento
+            Entrar em Contato
           </Link>
         </div>
-
-        {/* Links úteis */}
-        <div className="border-t border-gray-200 pt-8">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">
-            Páginas mais acessadas:
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
-            <Link 
-              href="/busca-ativos" 
-              className="text-base44-primary hover:text-base44-primary-dark transition-colors"
-            >
-              Busca de Bens
-            </Link>
-            <Link 
-              href="/due-diligence" 
-              className="text-base44-primary hover:text-base44-primary-dark transition-colors"
-            >
-              Due Diligence
-            </Link>
-            <Link 
-              href="/localizacao-rapida" 
-              className="text-base44-primary hover:text-base44-primary-dark transition-colors"
-            >
-              Localização Rápida
-            </Link>
-            <Link 
-              href="/sobre-nos" 
-              className="text-base44-primary hover:text-base44-primary-dark transition-colors"
-            >
-              Sobre Nós
-            </Link>
-          </div>
         </div>
-
       </div>
-    </div>
   )
 }
