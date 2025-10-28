@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import LayoutShell from '@/components/LayoutShell'
 import WhatsappButton from '@/components/WhatsappButton'
@@ -98,6 +99,7 @@ export default function RootLayout({
           <WhatsappButton />
           <CookieBanner />
         </ConsentProvider>
+        <Analytics />
       </body>
     </html>
   )
